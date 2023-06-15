@@ -17,12 +17,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($medicine_list as $key=>$medicine){
+
+                        @foreach($medicine_list as $key=>$medicine)
                             <tr>
                                 <td>{{ ++$key}}</td>
                                 <td>{{ $medicine->brand_name}}</td>
                                 <td>{{ $medicine->generic_name}}</td>
-                                <td>{{ $medicine->type_id}}</td>
+                                <td>{{ $medicine->type_name}}</td>
                                 <td>{{ $medicine->strength}}</td>
                                 <td>{{ $medicine->packsize}}</td>
                                 {{-- <td>{{ $medicine->company_name}}</td> --}}
@@ -42,7 +43,6 @@
                                     </form>
                                 </td>
                             </tr>
-                        }
                         @endforeach
                     </tbody>
                 </table>

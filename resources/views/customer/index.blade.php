@@ -23,7 +23,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach($customer_list as $key=>$customer){ ?>
+                        @foreach($customer_list as $key=>$customer)
                         <tr>
                             <td>{{ ++$key}}</td>
                             <td>{{ $customer->full_name}}</td>
@@ -47,7 +47,7 @@
                                 </form>
                             </td>
                         </tr>
-                        <?php } ?>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

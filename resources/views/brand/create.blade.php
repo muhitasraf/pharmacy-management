@@ -8,13 +8,11 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="font-weight-bold" for="brand_name">Brand Name :</label>
-                            <input type="text" class="form-control form-control-sm brand_name" placeholder="Brand Name"
-                                name="brand_name" id="brand_name" required />
+                            <input type="text" class="form-control brand_name" placeholder="Brand Name" name="brand_name" id="brand_name" required>
                         </div>
                         <div class="form-group">
                             <label class="font-weight-bold" for="packsize">Packing Size :</label>
-                            <input type="text" class="form-control form-control-sm packsize"
-                                placeholder="Packing e.g. 10 TAB / 100 ML" name="packsize" id="packsize" required />
+                            <input type="text" class="form-control packsize" placeholder="Packing e.g. 10 TAB / 100 ML" name="packsize" id="packsize" required>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -51,19 +49,17 @@
                         </div>
                         <div class="form-group">
                             <label class="font-weight-bold" for="medicine_name">Strength :</label>
-                            <input type="text" class="form-control form-control-sm strength" placeholder="120mg/5ml"
-                                name="strength" id="strength" required />
+                            <input type="text" class="form-control strength" placeholder="120mg/5ml" name="strength" id="strength" required>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="font-weight-bold" for="price">Price :</label>
-                            <input type="text" class="form-control form-control-sm price" placeholder="Price"
-                                name="price" id="price" required />
+                            <input type="text" class="form-control price" placeholder="Price" name="price" id="price" required>
                         </div>
                         <div class="form-group">
                             <label class="font-weight-bold" for="status">Status :</label>
-                            <select class="form-control select2" name="status" id="status">
+                            <select class="form-control" name="status" id="status">
                                 <option value="1">Active</option>
                                 <option value="0">De-Active</option>
                             </select>
@@ -72,10 +68,11 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12 text-right">
-                        <button type="submit" class="btnSubmit">Submit</button>
+                        <button type="submit" class="btn btn-info btnSubmit">Submit</button>
                     </div>
                 </div>
             </div>
         </form>
     </div>
+
 @stop

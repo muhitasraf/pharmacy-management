@@ -2,13 +2,13 @@
     @section('content')
     <div class="row">
         <div class="col col-md-12">
-            <a class="btn btn-success btn-sm mb-3" href="<?php echo route('customer.index');?>">
+            <a class="btn btn-success btn-sm mb-3" href="{{ route('customer.index') }}">
                 Customer List
             </a>
         </div>
     </div>
     <!-- customer details content -->
-    <form action="<?php echo route('customer.store'); ?>" method="post">
+    <form action="{{ route('customer.store') }}" method="post">
         @csrf
         <div class="row col col-md-8">
             <!-- customer name control -->

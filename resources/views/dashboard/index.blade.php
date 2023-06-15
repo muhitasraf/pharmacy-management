@@ -53,7 +53,7 @@
                         </button>
                     </div>
                 </div>
-                @includeWhen(request()->is('/'),'dashboard.summary')
+                {{-- @includeWhen(request()->is('/'),'dashboard.summary') --}}
                 @yield('content')
             </main>
         </div>
