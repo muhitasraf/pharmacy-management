@@ -67,40 +67,39 @@
     <script>
         let table = new DataTable('#myTable');
 
-    </script>
-        <script>
-            function initMenu() {
-                $('#menu ul').hide();
-                $('#menu li a').click(function() {
-                    $('#menu ul').hide('normal');
-                    // check if the next element is hidden
-                    if($(this).next().is(":hidden")) {
-                        $(this).next().slideToggle('normal');
-                    }
-                });
-            }
-            $(document).ready(function() {
-                initMenu();
+        $(document).ready(function() {
+            initMenu();
 
-                var currentRow = $("table.row_add tbody.append_row tr:last").html();
-                $(".add_row_btn").click(function() {
-                    for (var k = 0; k < 3; k++) {
-                        $("table.row_add").append('tbody.append_row <tr>' + currentRow + '</tr>');
-                    }
-                    $(".select2").select2();
-                });
-
-                //----------------Delete Row From Table-----------------
-                $('table.row_add').on('click', '.remove_row', function () {
-                    $(this).closest('tr').remove();
-                });
-
-                //----------------Initialize Select2-----------------
-                $(".select2").select2({
-
-                });
+            var currentRow = $("table.row_add tbody.append_row tr:last").html();
+            $(".add_row_btn").click(function() {
+                for (var k = 0; k < 3; k++) {
+                    $("table.row_add").append('tbody.append_row <tr>' + currentRow + '</tr>');
+                }
+                $(".select2").select2();
             });
-        </script>
+
+            //----------------Delete Row From Table-----------------
+            $('table.row_add').on('click', '.remove_row', function () {
+                $(this).closest('tr').remove();
+            });
+
+            //----------------Initialize Select2-----------------
+            $(".select2").select2({
+
+            });
+        });
+
+        function initMenu() {
+            $('#menu ul').hide();
+            $('#menu li a').click(function() {
+                $('#menu ul').hide('normal');
+                // check if the next element is hidden
+                if($(this).next().is(":hidden")) {
+                    $(this).next().slideToggle('normal');
+                }
+            });
+        }
+    </script>
 </body>
 
 </html>
