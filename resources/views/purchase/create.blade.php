@@ -106,86 +106,92 @@
             </div>
         </div>
     </form>
-    <script type="text/javascript">
-        $(document).ready(function() {
 
-            $('.company_name, .add_row_btn').on('change click',function(){
-                let company_id = $('.company_name').val();
-                $.ajax({
-                    url: '{{ route("purchase.medicine_list") }}',
-                    type: 'POST',
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    data: {'company_id':company_id},
-                    success: function(result){
-                        let brand = JSON.parse(result);
-                        let option = '<option value="0">Select Medicine</option>';
-                        for(let i=0;i<brand.length;i++){
-                            option += '<option value="'+brand[i]['id']+'">'+brand[i]['brand_name']+'-'+brand[i]['strength']+'</option>';
-                        }
-                        $('.brand_name').empty().append(option);
+@stop
+@section('scripts')
+<script type="text/javascript">
+    $(document).ready(function() {
+
+        $('.company_name, .add_row_btn').on('change click',function(){
+            let company_id = $('.company_name').val();
+            $.ajax({
+                url: '{{ route("purchase.medicine_list") }}',
+                type: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                data: {'company_id':company_id},
+                success: function(result){
+                    let brand = JSON.parse(result);
+                    let option = '<option value="0">Select Medicine</option>';
+                    for(let i=0;i<brand.length;i++){
+                        option += '<option value="'+brand[i]['id']+'">'+brand[i]['brand_name']+'-'+brand[i]['strength']+'</option>';
                     }
-                });
+                    $('.brand_name').empty().append(option);
+                }
             });
-
-            $('.purchase_table').on('change', '.brand_name',function(){
-                let this_key = $(this);
-                let brand_id = this_key.val();
-
-                $.ajax({
-                    url: '{{ route("purchase.single_brand") }}',
-                    type: 'POST',
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    data: {'brand_id':brand_id},
-                    success: function(result){
-                        if(result.length){
-                            let brand_data = JSON.parse(result)[0];
-                            console.log(brand_data)
-                            this_key.closest('tr').find('td input.generic_name').val(brand_data['generic_name']);
-                            this_key.closest('tr').find('td input.generic_id').val(brand_data['generic_id']);
-                            this_key.closest('tr').find('td input.price').val(brand_data['price']);
-                            let qty = this_key.closest('tr').find('td input.qty').val()??1;
-                            this_key.closest('tr').find('td input.total').val(qty*brand_data['price']);
-                            this_key.closest('tr').find('td input.qty').focus();
-                        }else{
-                            toastr.success("Something went wrong!");
-                        }
-
-                    }
-                });
-            });
-
-            $('.purchase_table').on('keyup', '.qty',function(){
-                let qty = $(this).closest('tr').find('td input.qty').val()??0;
-                let price = $(this).closest('tr').find('td input.price').val()??0;
-                $(this).closest('tr').find('td input.total').val(qty*price);
-                calculate_total();
-            });
-
-
         });
 
-        function calculate_total(){
-            let total_qty = 0;
-            $('.qty').each(function(){
-                if($(this).val()){
-                    total_qty += parseFloat($(this).val());
+        $('.purchase_table').on('change', '.brand_name',function(){
+            let this_key = $(this);
+            let brand_id = this_key.val();
+
+            $.ajax({
+                url: '{{ route("purchase.single_brand") }}',
+                type: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                data: {'brand_id':brand_id},
+                success: function(result){
+                    if(result.length){
+                        let brand_data = JSON.parse(result)[0];
+                        console.log(brand_data)
+                        this_key.closest('tr').find('td input.generic_name').val(brand_data['generic_name']);
+                        this_key.closest('tr').find('td input.generic_id').val(brand_data['generic_id']);
+                        this_key.closest('tr').find('td input.price').val(brand_data['price']);
+                        let qty = this_key.closest('tr').find('td input.qty').val()??1;
+                        this_key.closest('tr').find('td input.total').val(qty*brand_data['price']);
+                        this_key.closest('tr').find('td input.qty').focus();
+                    }else{
+                        toastr.success("Something went wrong!");
+                    }
+
                 }
             });
-            $('.total_qty').val(total_qty);
+        });
 
-            let grand_total = 0;
-            $('.total').each(function(){
-                if($(this).val()){
-                    grand_total += parseFloat($(this).val());
-                }
-            });
-            $('.grand_total').val(grand_total);
-        }
+        $('.purchase_table').on('keyup', '.qty',function(){
+            let qty = $(this).closest('tr').find('td input.qty').val()??0;
+            let price = $(this).closest('tr').find('td input.price').val()??0;
+            $(this).closest('tr').find('td input.total').val(qty*price);
+            calculate_total();
+        });
 
-    </script>
+
+    });
+    $('table.purchase_table').on('click', '.remove_row', async function () {
+        await remove_row($(this));
+        calculate_total();
+    });
+    function calculate_total(){
+        let total_qty = 0;
+        $('.qty').each(function(){
+            if($(this).val()){
+                total_qty += parseFloat($(this).val());
+            }
+        });
+        $('.total_qty').val(total_qty);
+
+        let grand_total = 0;
+        $('.total').each(function(){
+            if($(this).val()){
+                grand_total += parseFloat($(this).val());
+            }
+        });
+        $('.grand_total').val(grand_total);
+    }
+
+</script>
 @stop
 

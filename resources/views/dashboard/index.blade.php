@@ -79,9 +79,10 @@
             });
 
             //----------------Delete Row From Table-----------------
-            $('table.row_add').on('click', '.remove_row', function () {
-                $(this).closest('tr').remove();
-            });
+
+            // $('table.row_add').on('click', '.remove_row', function () {
+
+            // });
 
             //----------------Initialize Select2-----------------
             $(".select2").select2({
@@ -99,7 +100,11 @@
                 }
             });
         }
+        function remove_row($_this){
+            $_this.closest('tr').remove();
+        }
     </script>
+     @yield('scripts')
 </body>
 
 </html>
