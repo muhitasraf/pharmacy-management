@@ -2,9 +2,9 @@
     @section('content')
     <div class="row">
         <div class="col col-md-12">
-            <!-- <a class="btn btn-success btn-sm mb-3" href="{{ route('purchase.index')}}">
+            <a class="btn btn-success btn-sm mb-3" href="{{ route('purchase.index')}}">
                 Purrchase List
-            </a> -->
+            </a>
         </div>
     </div>
 
@@ -18,11 +18,9 @@
                     <label class="font-weight-bold" for="company_name">Supplier Name :</label>
                     <select class="form-control select2 company_name" name="company_name" id="company_name">
                         <option value="0">Select Company</option>
-                        <?php
-                        foreach ($company_name as $company) {
-                            echo "<option value='" . $company->id . "'>" . $company->company_name . "</option>";
-                        }
-                        ?>
+                        @foreach ($company_name as $company)
+                            {!! "<option value='" . $company->id . "'>" . $company->company_name . "</option>" !!}
+                        @endforeach
                     </select>
                     <code class="text-danger small font-weight-bold float-right" id="name_error" style="display: none;"></code>
                 </div>

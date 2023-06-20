@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col col-md-12">
             <a class="btn btn-success btn-sm mb-3" href="{{ route('purchase.create')}}">
-                New Company
+                New Purchase
             </a>
         </div>
     </div>
@@ -23,32 +23,31 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($purchase_list as $key=>$purchase){
-                        <tr>
-                            <td>{{ ++$key }}</td>
-                            <td>{{ $purchase->company_name}}</td>
-                            <td>{{ $purchase->invoice_no}}</td>
-                            <td>{{ $purchase->total_qty}}</td>
-                            <td>{{ $purchase->total_price}}</td>
-                            <td>{{ $purchase->tran_date}}</td>
+                        @foreach($purchase_list as $key=>$purchase)
+                            <tr>
+                                <td>{{ ++$key }}</td>
+                                <td>{{ $purchase->company_name}}</td>
+                                <td>{{ $purchase->invoice_no}}</td>
+                                <td>{{ $purchase->total_qty}}</td>
+                                <td>{{ $purchase->total_price}}</td>
+                                <td>{{ $purchase->tran_date}}</td>
 
-                            <td>
-                                <a class="btn btn-success btn-sm" href="{{ URL::to('purchase/'.$purchase->id.'/edit') }}">
-                                    <i class="fa fa-edit"></i>
-                                </a>
-                                <a class="btn btn-success btn-sm" href="{{ URL::to('purchase/'.$purchase->id ) }}">
-                                    <i class="fa fa-eye"></i>
-                                </a>
-                                <form action="{{ route('purchase.destroy', $purchase->id ) }}" method="post">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-sm btn-danger" style="display: inline-block;" onclick="return confirm('Are you sure to delete?')">
-                                        <i class="fa fa-trash"></i>
-                                    </button>
-                                </form>
-                            </td>
-                        </tr>
-                        }
+                                <td>
+                                    <a class="btn btn-success btn-sm" href="{{ URL::to('purchase/'.$purchase->id.'/edit') }}">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+                                    <a class="btn btn-success btn-sm" href="{{ URL::to('purchase/'.$purchase->id ) }}">
+                                        <i class="fa fa-eye"></i>
+                                    </a>
+                                    <form action="{{ route('purchase.destroy', $purchase->id ) }}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-sm btn-danger" style="display: inline-block;" onclick="return confirm('Are you sure to delete?')">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
                         @endforeach
                     </tbody>
                 </table>
