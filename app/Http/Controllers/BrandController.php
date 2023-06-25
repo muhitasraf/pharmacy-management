@@ -64,7 +64,7 @@ class BrandController extends Controller
         $brand->updated_by = 1;
         $brand->updated_at = date('Y-m-d');
 
-        // $result = DB::table('brands')->insert($brand_data);
+        $result = $brand->save();
         if($result){
             return redirect('brand/index');
         }
