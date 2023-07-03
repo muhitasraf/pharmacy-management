@@ -16,7 +16,7 @@ class GenericController extends Controller
     {
         $title = 'All Generic List';
         $generic_name = DB::table('generic')->get();
-        return view('generic/index',compact('title','generic_name'));
+        return view('generic.index',compact('title','generic_name'));
     }
 
     /**
@@ -27,7 +27,7 @@ class GenericController extends Controller
     public function create()
     {
         $title = 'Create New Generic/Group';
-        return view('generic/create',compact('title'));
+        return view('generic.create',compact('title'));
     }
 
     /**
@@ -62,7 +62,7 @@ class GenericController extends Controller
     {
         $title = 'Single Group/Generic';
         $generic_name = DB::table('generic')->where('id',$id)->first();
-        return view('generic/show',compact('title','generic_name'));
+        return view('generic.show',compact('title','generic_name'));
     }
 
     /**
@@ -75,7 +75,7 @@ class GenericController extends Controller
     {
         $title = 'Generic Name Edit';
         $generic_name = DB::table('generic')->where('id',$id)->first();
-        return view('generic/edit',compact('title','generic_name'));
+        return view('generic.edit',compact('title','generic_name'));
     }
 
     /**

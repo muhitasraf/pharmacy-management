@@ -13,28 +13,28 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach($generic_name as $key=>$generic){ ?>
-                        <tr>
-                            <td><?php echo ++$key;?></td>
-                            <td><?php echo $generic->generic_name;?></td>
-                            <td><?php echo $generic->status==1 ? 'Active': 'InActive';?></td>
-                            <td>
-                                <a class="btn btn-success btn-sm" href="{{ URL::to('generic/'.$generic->id.'/edit') }}">
-                                    <i class="fa fa-edit"></i>
-                                </a>
-                                <a class="btn btn-success btn-sm" href="{{ URL::to('generic/'.$generic->id ) }}">
-                                    <i class="fa fa-eye"></i>
-                                </a>
-                                <form action="{{ route('generic.destroy', $generic->id ) }}" method="post">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-sm btn-danger" style="display: inline-block;" onclick="return confirm('Are you sure to delete?')">
-                                        <i class="fa fa-trash"></i>
-                                    </button>
-                                </form>
-                            </td>
-                        </tr>
-                        <?php } ?>
+                        @foreach($generic_name as $key=>$generic)
+                            <tr>
+                                <td>{{ ++$key }}</td>
+                                <td>{{ $generic->generic_name }}</td>
+                                <td>{{ $generic->status==1 ? 'Active': 'InActive' }}</td>
+                                <td>
+                                    <a class="btn btn-success btn-sm" href="{{ URL::to('generic/'.$generic->id.'/edit') }}">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+                                    <a class="btn btn-success btn-sm" href="{{ URL::to('generic/'.$generic->id ) }}">
+                                        <i class="fa fa-eye"></i>
+                                    </a>
+                                    <form action="{{ route('generic.destroy', $generic->id ) }}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-sm btn-danger" style="display: inline-block;" onclick="return confirm('Are you sure to delete?')">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
