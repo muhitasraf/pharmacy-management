@@ -19,7 +19,7 @@ class PurchaseController extends Controller
         $sql = "SELECT tm.*, c.company_name FROM tran_master tm
                 LEFT JOIN company c ON c.id = tm.company_id";
         $purchase_list = DB::select($sql);
-        return view('purchase/index',compact('title','purchase_list'));
+        return view('purchase.index',compact('title','purchase_list'));
     }
 
     /**
@@ -39,7 +39,7 @@ class PurchaseController extends Controller
             $new_invoice_no = "INV-".date("Y")."-00000000";
         }
         $company_name = DB::table('company')->select('id','company_name')->get();
-        return view('purchase/create',compact('title','company_name','new_invoice_no'));
+        return view('purchase.create',compact('title','company_name','new_invoice_no'));
     }
 
     /**
@@ -59,15 +59,15 @@ class PurchaseController extends Controller
                 'total_qty' => $request->total_qty,
                 'total_price' => $request->grand_total,
             ];
-            $result = DB::table('tran_master')->insertGetId($tran_data);
-            dd($request);
-            if($result){
-                $id = DB::table('tran_master')->select('id')->orderBy('id','DESC')->first()->id;
+
+            $tran_id = DB::table('tran_master')->insertGetId($tran_data);
+
+            if($tran_id){
                 for($i = 0; $i<count($request->brand_name); $i++){
                     $purchase_data[] = [
                         'brand_id' => $request->brand_name[$i],
                         'generic_id' => $request->generic_id[$i],
-                        'tran_id' => $id,
+                        'tran_id' => $tran_id,
                         'price' => $request->price[$i],
                         'qty' => $request->qty[$i],
                         'total_price' => $request->total[$i],
@@ -110,7 +110,7 @@ class PurchaseController extends Controller
                 WHERE tm.id = $id";
         $company_name = collect(DB::select($sql))->first();
 
-        return view('purchase/show',compact('title', 'purchase_data','company_name'));
+        return view('purchase.show',compact('title', 'purchase_data','company_name'));
     }
 
     /**
@@ -132,7 +132,7 @@ class PurchaseController extends Controller
         $purchase_data = DB::select($sql);
         $company_name = DB::table('company')->select('id','company_name')->get();
         $brand_data = DB::table('brands')->select('id','brand_name')->get();
-        return view('purchase/edit',compact('title', 'company_name', 'purchase_data','brand_data'));
+        return view('purchase.edit',compact('title', 'company_name', 'purchase_data','brand_data'));
     }
 
     /**
@@ -208,7 +208,7 @@ class PurchaseController extends Controller
 
     public function single_brand(){
         $brand_id = $_POST['brand_id'];
-        $sql = "SELECT b.id, b.brand_name, b.kkkkgeneric_id, t.type_name, b.price, b.strength, b.packsize, g.generic_name, c.company_name, b.status FROM brands b
+        $sql = "SELECT b.id, b.brand_name, b.generic_id, t.type_name, b.price, b.strength, b.packsize, g.generic_name, c.company_name, b.status FROM brands b
                 LEFT JOIN generic g ON b.generic_id = g.id
                 LEFT JOIN company c ON b.company_id = c.id
                 LEFT JOIN type t ON b.type_id = t.id WHERE b.id = $brand_id";

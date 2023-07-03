@@ -9,7 +9,7 @@
     </div>
 
     <!-- company details content -->
-    <form action="{{ route('purchase.store')}}" method="POST">
+    <form action="{{ route('purchase.store') }}" method="POST">
         @csrf
         <div class="row">
             <!-- company name control -->
@@ -84,7 +84,7 @@
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td colspan="3">total</td>
+                        <td colspan="3">Total</td>
                         <td><input type="text" name="total_qty" class="form-control form-control-sm total_qty" readonly/></td>
                         <td><input type="text" name="grand_total" class="form-control form-control-sm grand_total" readonly/></td>
                     </tr>

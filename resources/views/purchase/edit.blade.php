@@ -27,7 +27,6 @@
                                 }
                                 echo "<option value='" . $company->id . "' $selected>" . $company->company_name . "</option>";
                             @endphp
-
                         @endforeach
                     </select>
                     <code class="text-danger small font-weight-bold float-right" id="name_error" style="display: none;"></code>
@@ -103,7 +102,7 @@
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td colspan="3">total</td>
+                        <td colspan="3">Total</td>
                         <td><input type="text" name="total_qty" class="form-control form-control-sm total_qty" readonly/></td>
                         <td><input type="text" name="grand_total" class="form-control form-control-sm grand_total" readonly/></td>
                     </tr>
