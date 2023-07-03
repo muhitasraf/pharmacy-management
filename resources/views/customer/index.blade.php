@@ -38,7 +38,7 @@
                                 <a class="btn btn-success btn-sm" href="{{ URL::to('customer/'.$customer->id ) }}">
                                     <i class="fa fa-eye"></i>
                                 </a>
-                                <form action="{{ route('customer.destroy', $customer->id ) }}" method="post">
+                                <form action="{{ route('customer.destroy', $customer->id ) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-sm btn-danger" style="display: inline-block;" onclick="return confirm('Are you sure to delete?')">

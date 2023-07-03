@@ -8,7 +8,7 @@
         </div>
     </div>
     <!-- customer details content -->
-    <form action="{{ route('customer.store') }}" method="post">
+    <form action="{{ route('customer.store') }}" method="POST">
         @csrf
         <div class="row col col-md-8">
             <!-- customer name control -->
@@ -61,7 +61,7 @@
             <div class="row col col-md-12">
                 &emsp;
                 <div class="form-group m-auto">
-                    <button class="btn btn-primary" onclick="addCustomer();">ADD Customer</button>
+                    <button class="btn btn-primary">ADD Customer</button>
                 </div>
             </div>
         </div>

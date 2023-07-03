@@ -5,6 +5,9 @@
             <a class="btn btn-success btn-sm mb-3" href="{{ route('customer.index')}}">
                 Customer List
             </a>
+            <a class="btn btn-success btn-sm mb-3" href="{{ route('customer.create')}}">
+                Create New Customer
+            </a>
         </div>
     </div>
     <div class="row">

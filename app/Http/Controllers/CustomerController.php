@@ -16,7 +16,7 @@ class CustomerController extends Controller
     {
         $title = 'All Customer List';
         $customer_list = DB::table('customer')->get();
-        return view('customer/index',compact('title','customer_list'));
+        return view('customer.index',compact('title','customer_list'));
     }
 
     /**
@@ -27,7 +27,7 @@ class CustomerController extends Controller
     public function create()
     {
         $title = 'Create New Customer';
-        return view('customer/create',compact('title'));
+        return view('customer.create',compact('title'));
     }
 
     /**
@@ -46,8 +46,6 @@ class CustomerController extends Controller
             'status' => $request->customer_status,
             'created_by' => 1,
             'created_at' => date('Y-m-d'),
-            'updated_by' => 1,
-            'updated_at' => date('Y-m-d'),
         ];
         $result = DB::table('customer')->insert($customer_data);
         if($result){
@@ -65,7 +63,7 @@ class CustomerController extends Controller
     {
         $title = 'Single Group/Generic';
         $customer_data = DB::table('customer')->where('id',$id)->first();
-        return view('customer/show',compact('title','customer_data'));
+        return view('customer.show',compact('title','customer_data'));
     }
 
     /**
@@ -76,9 +74,9 @@ class CustomerController extends Controller
      */
     public function edit($id)
     {
-        $title = 'Customer Edit';
+        $title = 'Edit Customer';
         $customer_data = DB::table('customer')->where('id',$id)->first();
-        return view('customer/edit',compact('title','customer_data'));
+        return view('customer.edit',compact('title','customer_data'));
     }
 
     /**
@@ -96,8 +94,6 @@ class CustomerController extends Controller
             'address' => $request->customer_address,
             'customer_type' => $request->customer_type,
             'status' => $request->customer_status,
-            'created_by' => 1,
-            'created_at' => date('Y-m-d'),
             'updated_by' => 1,
             'updated_at' => date('Y-m-d'),
         ];
