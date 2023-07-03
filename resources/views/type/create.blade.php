@@ -35,7 +35,7 @@
 
             <div class="row">
                 <div class="col-md-12 text-right">
-                    <button type="submit" class="btnSubmit">Submit</button>
+                    <button type="submit" class="btn btn-info btnSubmit">Submit</button>
                 </div>
             </div>
         </div>

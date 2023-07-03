@@ -16,7 +16,7 @@ class MedicineTypeController extends Controller
     {
         $title = 'Medicine Type List';
         $type_name = DB::table('type')->get();
-        return view('type/index',compact('title','type_name'));
+        return view('type.index',compact('title','type_name'));
     }
 
     /**
@@ -27,7 +27,7 @@ class MedicineTypeController extends Controller
     public function create()
     {
         $title = 'Create New Medicine Type';
-        return view('type/create',compact('title'));
+        return view('type.create',compact('title'));
     }
 
     /**
@@ -61,7 +61,7 @@ class MedicineTypeController extends Controller
     {
         $title = 'Medicine Type';
         $type_name = DB::table('type')->where('id',$id)->first();
-        return view('type/show',compact('title','type_name'));
+        return view('type.show',compact('title','type_name'));
     }
 
     /**
@@ -74,7 +74,7 @@ class MedicineTypeController extends Controller
     {
         $title = 'Type Name Edit';
         $type_name = DB::table('type')->where('id',$id)->first();
-        return view('type/edit',compact('title','type_name'));
+        return view('type.edit',compact('title','type_name'));
     }
 
     /**
