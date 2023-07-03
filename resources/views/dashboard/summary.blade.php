@@ -71,11 +71,11 @@
                     <tbody>
                         <tr>
                             <th>Total Sales</th>
-                            <th class="text-success">Rs. 5199.48</th>
+                            <th class="text-success">Tk. 5199.48</th>
                         </tr>
                         <tr>
                             <th>Total Purchase</th>
-                            <th class="text-danger">Rs. 1000</th>
+                            <th class="text-danger">Tk. 1000</th>
                         </tr>
                     </tbody>
                 </table>

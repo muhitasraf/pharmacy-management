@@ -208,7 +208,7 @@ class PurchaseController extends Controller
 
     public function single_brand(){
         $brand_id = $_POST['brand_id'];
-        $sql = "SELECT b.id, b.brand_name, b.generic_id, t.type_name, b.price, b.strength, b.packsize, g.generic_name, c.company_name, b.status FROM brands b
+        $sql = "SELECT b.id, b.brand_name, b.kkkkgeneric_id, t.type_name, b.price, b.strength, b.packsize, g.generic_name, c.company_name, b.status FROM brands b
                 LEFT JOIN generic g ON b.generic_id = g.id
                 LEFT JOIN company c ON b.company_id = c.id
                 LEFT JOIN type t ON b.type_id = t.id WHERE b.id = $brand_id";

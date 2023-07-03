@@ -32,7 +32,6 @@
                                 @foreach ($company_name as $company)
                                     <option value="{{ $company->id }}">{{ $company->company_name }}</option>
                                 @endforeach
-
                             </select>
                         </div>
                     </div>

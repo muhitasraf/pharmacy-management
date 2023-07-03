@@ -53,10 +53,3 @@
         </div>
     </div>
 @stop
-<script>
-    $(document).ready(function(){
-        $(".delete_brand").click(function(){
-            alert("The paragraph was clicked.");
-        });
-    });
-</script>

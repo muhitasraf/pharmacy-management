@@ -76,7 +76,6 @@
                                 <select class="form-control select2_1 select2 brand_name" style="width : 100%;" name="brand_name[]" id="brand_name">
                                     <option value="0">Select Medicine</option>
                                     @php
-
                                         foreach($brand_data as $brand){
                                             $selected = '';
                                             if($purchase->brand_id == $brand->id){

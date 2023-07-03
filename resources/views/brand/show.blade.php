@@ -17,13 +17,13 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td><?php echo $brand_name->brand_name;?></td>
-                            <td><?php echo $brand_name->type_name;?></td>
-                            <td><?php echo $brand_name->strength;?></td>
-                            <td><?php echo $brand_name->packsize;?></td>
-                            <td><?php echo $brand_name->generic_name;?></td>
-                            <td><?php echo $brand_name->company_name;?></td>
-                            <td><?php echo $brand_name->status==1 ? 'Active': 'InActive';?></td>
+                            <td>{{ $brand_name->brand_name }}</td>
+                            <td>{{ $brand_name->type_name }}</td>
+                            <td>{{ $brand_name->strength }}</td>
+                            <td>{{ $brand_name->packsize }}</td>
+                            <td>{{ $brand_name->generic_name }}</td>
+                            <td>{{ $brand_name->company_name }}</td>
+                            <td>{{ $brand_name->status==1 ? 'Active': 'InActive' }}</td>
                         </tr>
                     </tbody>
                 </table>
