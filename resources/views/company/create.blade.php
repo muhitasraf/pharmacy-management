@@ -2,13 +2,13 @@
     @section('content')
     <div class="row">
         <div class="col col-md-12">
-            <a class="btn btn-success btn-sm mb-3" href="<?php echo route('company.index');?>">
+            <a class="btn btn-success btn-sm mb-3" href="{{ route('company.index') }}">
                 Company List
             </a>
         </div>
     </div>
     <!-- company details content -->
-    <form action="<?php echo route('company.store'); ?>" method="post">
+    <form action="{{ route('company.store') }}" method="POST">
         @csrf
         <div class="row col col-md-8">
             <!-- company name control -->
@@ -61,7 +61,7 @@
             <div class="row col col-md-12">
                 &emsp;
                 <div class="form-group m-auto">
-                    <button class="btn btn-primary" onclick="addcompany();">ADD Company</button>
+                    <button class="btn btn-primary">ADD Company</button>
                 </div>
             </div>
         </div>

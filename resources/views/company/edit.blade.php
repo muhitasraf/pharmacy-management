@@ -7,7 +7,7 @@
             </a>
         </div>
     </div>
-    <form action="{{ route('company.update',['company'=>$company_data->id])}}" method="post">
+    <form action="{{ route('company.update',['company'=>$company_data->id])}}" method="POST">
         @csrf
         @method('PUT')
         <div class="row col col-md-8">
@@ -62,7 +62,7 @@
             <div class="row col col-md-12">
                 &emsp;
                 <div class="form-group m-auto">
-                    <button class="btn btn-primary" onclick="addcompany();">ADD Company</button>
+                    <button class="btn btn-primary">ADD Company</button>
                 </div>
             </div>
         </div>

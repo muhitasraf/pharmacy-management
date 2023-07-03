@@ -16,7 +16,7 @@ class CompanyController extends Controller
     {
         $title = 'Company List';
         $company_list = DB::table('company')->get();
-        return view('company/index',compact('title','company_list'));
+        return view('company.index',compact('title','company_list'));
     }
 
     /**
