@@ -50,7 +50,7 @@ class BrandController extends Controller
     public function store(Request $request)
     {
         $brand = new Brand();
-        
+
         $brand->brand_name = $request->input('brand_name');
         $brand->packsize = $request->input('packsize');
         $brand->generic_id = $request->input('generic_name');
